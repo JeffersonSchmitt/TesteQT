@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TesteQT.Models.Process>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+        <div>
+            <strong>@TempData["AlertMessage"]</strong>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<h1>Processos</h1>
+
+<p>
+    <a class="btn btn-outline-primary" asp-action="Create">Cadastrar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <h5>Identificador do processo</h5>
+            </th>
+            <th>
+                <h5>Código do processo</h5>
+            </th>
+            <th>
+                <h5>Ações</h5>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProcessCode)
+                </td>
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-action="Edit" style="margin-right:15px" asp-route-id="@item.Id">Editar</a>
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

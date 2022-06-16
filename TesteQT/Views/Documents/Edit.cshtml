@@ -1,0 +1,52 @@
+﻿@model TesteQT.Models.Document
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar</h1>
+
+<h4>Documento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="DocumentCode" class="control-label">Código do Documento</label>
+                <input asp-for="DocumentCode" class="form-control" />
+                <span asp-validation-for="DocumentCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Titulo</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label">Categoria</label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Files" class="control-label">Arquivos</label>
+                <input asp-for="Files" class="form-control" />
+                <span asp-validation-for="Files" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Process" class="control-label">Identificador do processo</label>
+                <input asp-for="Process" class="form-control" />
+
+                <span asp-validation-for="Process" class="text-danger"></span>
+            </div>
+            <div class="form-group"  style="margin-top:15px">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+               <a  style="margin-left:15px" class="btn btn-primary" asp-action="Index">Voltar ao inicio</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
